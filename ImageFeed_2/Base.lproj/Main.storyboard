@@ -52,20 +52,20 @@
                                             </subviews>
                                             <color key="backgroundColor" name="YP Black"/>
                                             <constraints>
-                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bnx-up-WLD" secondAttribute="trailing" constant="8" id="92i-KS-vDh"/>
+                                                <constraint firstItem="bnx-up-WLD" firstAttribute="leading" secondItem="nZ5-a1-zPF" secondAttribute="leading" constant="8" id="4V5-3O-IRc"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="bottom" secondItem="bnx-up-WLD" secondAttribute="bottom" constant="8" id="Gmh-hZ-cna"/>
                                                 <constraint firstItem="nZ5-a1-zPF" firstAttribute="leading" secondItem="fZ4-vD-D7G" secondAttribute="leading" constant="16" id="Kqq-A6-OEK"/>
                                                 <constraint firstAttribute="bottom" secondItem="nZ5-a1-zPF" secondAttribute="bottom" constant="4" id="NjL-QU-1V9"/>
                                                 <constraint firstItem="VrP-wC-aUD" firstAttribute="top" secondItem="nZ5-a1-zPF" secondAttribute="top" id="SgF-92-Nwt"/>
-                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="bottom" secondItem="bnx-up-WLD" secondAttribute="bottom" constant="8" id="TeO-e1-SJf"/>
                                                 <constraint firstItem="nZ5-a1-zPF" firstAttribute="trailing" secondItem="VrP-wC-aUD" secondAttribute="trailing" id="Ueo-gh-wTq"/>
-                                                <constraint firstItem="bnx-up-WLD" firstAttribute="leading" secondItem="nZ5-a1-zPF" secondAttribute="leading" constant="8" id="eKJ-d7-JkK"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bnx-up-WLD" secondAttribute="trailing" constant="8" id="pd5-mi-FvX"/>
                                                 <constraint firstItem="nZ5-a1-zPF" firstAttribute="top" secondItem="fZ4-vD-D7G" secondAttribute="top" constant="4" id="tiK-ya-3Am"/>
                                                 <constraint firstAttribute="trailing" secondItem="nZ5-a1-zPF" secondAttribute="trailing" constant="16" id="zzd-Bg-y0c"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellImage" destination="nZ5-a1-zPF" id="hwf-rg-kgc"/>
-                                            <outlet property="dateLabel" destination="bnx-up-WLD" id="Mdr-DW-x55"/>
+                                            <outlet property="dateLabel" destination="bnx-up-WLD" id="aWV-7c-Iuo"/>
                                             <outlet property="likeButton" destination="VrP-wC-aUD" id="x6m-hi-T28"/>
                                         </connections>
                                     </tableViewCell>

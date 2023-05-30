@@ -17,14 +17,6 @@ class ImagesListViewController: UIViewController {
         return .lightContent
     }
     
-    
-    private lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.dateStyle = .none
-        return formatter
-    } ()
-
 }
 
 extension ImagesListViewController: UITableViewDelegate {
@@ -67,7 +59,7 @@ extension ImagesListViewController {
         }
         
         cell.cellImage.image = image
-        cell.dateLabel.text = dateFormatter.string(from: Date())
+        cell.dateLabel.text = Date().dateTimeString
         
         let isLiked = indexPath.row % 2 == 0
         let likeImage = isLiked ? UIImage(named: nameLikeButtonOn) : UIImage(named: nameLikeButtonOff)
