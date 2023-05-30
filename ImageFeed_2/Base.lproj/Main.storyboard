@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Images List View Controller-->
+        <!--Images List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ImagesListViewController" customModule="ImageFeed_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Images List" customClass="ImagesListViewController" customModule="ImageFeed_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,12 +22,46 @@
                                 <color key="backgroundColor" name="YP Black"/>
                                 <color key="sectionIndexBackgroundColor" name="YP Black"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" id="PIT-fd-jge" customClass="ImagesLitCell" customModule="ImageFeed_2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="ImagesListCell" rowHeight="203" id="PIT-fd-jge" customClass="ImagesListCell" customModule="ImageFeed_2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PIT-fd-jge" id="fZ4-vD-D7G">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="nZ5-a1-zPF" userLabel="Cell Image">
+                                                    <rect key="frame" x="16" y="4" width="361" height="195"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 мая 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnx-up-WLD" userLabel="Date Label">
+                                                    <rect key="frame" x="24" y="175" width="79" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" name="YP White"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrP-wC-aUD" userLabel="Like Button">
+                                                    <rect key="frame" x="335" y="4" width="42" height="42"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="like_button_on"/>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" name="YP Black"/>
+                                            <constraints>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bnx-up-WLD" secondAttribute="trailing" constant="8" id="92i-KS-vDh"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="leading" secondItem="fZ4-vD-D7G" secondAttribute="leading" constant="16" id="Kqq-A6-OEK"/>
+                                                <constraint firstAttribute="bottom" secondItem="nZ5-a1-zPF" secondAttribute="bottom" constant="4" id="NjL-QU-1V9"/>
+                                                <constraint firstItem="VrP-wC-aUD" firstAttribute="top" secondItem="nZ5-a1-zPF" secondAttribute="top" id="SgF-92-Nwt"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="bottom" secondItem="bnx-up-WLD" secondAttribute="bottom" constant="8" id="TeO-e1-SJf"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="trailing" secondItem="VrP-wC-aUD" secondAttribute="trailing" id="Ueo-gh-wTq"/>
+                                                <constraint firstItem="bnx-up-WLD" firstAttribute="leading" secondItem="nZ5-a1-zPF" secondAttribute="leading" constant="8" id="eKJ-d7-JkK"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="top" secondItem="fZ4-vD-D7G" secondAttribute="top" constant="4" id="tiK-ya-3Am"/>
+                                                <constraint firstAttribute="trailing" secondItem="nZ5-a1-zPF" secondAttribute="trailing" constant="16" id="zzd-Bg-y0c"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -56,8 +90,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="0" width="1920" height="1080"/>
+        <image name="like_button_on" width="42" height="42"/>
         <namedColor name="YP Black">
-            <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YP White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
