@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="nZ5-a1-zPF" userLabel="Cell Image">
-                                                    <rect key="frame" x="16" y="4" width="361" height="195"/>
+                                                    <rect key="frame" x="8" y="4" width="377" height="195"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="16"/>
@@ -38,31 +38,36 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 мая 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnx-up-WLD" userLabel="Date Label">
-                                                    <rect key="frame" x="24" y="175" width="79" height="16"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrP-wC-aUD" userLabel="Like Button">
+                                                    <rect key="frame" x="343" y="4" width="42" height="42"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="like_button_on"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 мая 2023" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0O-L7-1FY" userLabel="Date Label">
+                                                    <rect key="frame" x="16" y="175" width="377" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" name="YP White"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrP-wC-aUD" userLabel="Like Button">
-                                                    <rect key="frame" x="335" y="4" width="42" height="42"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="like_button_on"/>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" name="YP Black"/>
                                             <constraints>
-                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bnx-up-WLD" secondAttribute="trailing" constant="8" id="92i-KS-vDh"/>
-                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="leading" secondItem="fZ4-vD-D7G" secondAttribute="leading" constant="16" id="Kqq-A6-OEK"/>
-                                                <constraint firstAttribute="bottom" secondItem="nZ5-a1-zPF" secondAttribute="bottom" constant="4" id="NjL-QU-1V9"/>
-                                                <constraint firstItem="VrP-wC-aUD" firstAttribute="top" secondItem="nZ5-a1-zPF" secondAttribute="top" id="SgF-92-Nwt"/>
-                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="bottom" secondItem="bnx-up-WLD" secondAttribute="bottom" constant="8" id="TeO-e1-SJf"/>
-                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="trailing" secondItem="VrP-wC-aUD" secondAttribute="trailing" id="Ueo-gh-wTq"/>
-                                                <constraint firstItem="bnx-up-WLD" firstAttribute="leading" secondItem="nZ5-a1-zPF" secondAttribute="leading" constant="8" id="eKJ-d7-JkK"/>
-                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="top" secondItem="fZ4-vD-D7G" secondAttribute="top" constant="4" id="tiK-ya-3Am"/>
-                                                <constraint firstAttribute="trailing" secondItem="nZ5-a1-zPF" secondAttribute="trailing" constant="16" id="zzd-Bg-y0c"/>
+                                                <constraint firstAttribute="bottom" secondItem="nZ5-a1-zPF" secondAttribute="bottom" constant="4" id="1Rn-Gt-EBm"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="bottom" secondItem="n0O-L7-1FY" secondAttribute="bottom" constant="8" id="5I3-hq-WvG"/>
+                                                <constraint firstItem="VrP-wC-aUD" firstAttribute="top" secondItem="nZ5-a1-zPF" secondAttribute="top" id="8hX-bp-7aw"/>
+                                                <constraint firstAttribute="trailing" secondItem="nZ5-a1-zPF" secondAttribute="trailing" constant="8" id="Fq4-yl-e6K"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="top" secondItem="fZ4-vD-D7G" secondAttribute="top" constant="4" id="SpL-J0-8OX"/>
+                                                <constraint firstItem="nZ5-a1-zPF" firstAttribute="leading" secondItem="fZ4-vD-D7G" secondAttribute="leading" constant="8" id="YFC-Bm-HIl"/>
+                                                <constraint firstItem="n0O-L7-1FY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nZ5-a1-zPF" secondAttribute="trailing" constant="8" id="sdV-4p-1iv"/>
+                                                <constraint firstItem="n0O-L7-1FY" firstAttribute="leading" secondItem="nZ5-a1-zPF" secondAttribute="leading" constant="8" id="tS4-kY-KxH"/>
+                                                <constraint firstItem="VrP-wC-aUD" firstAttribute="trailing" secondItem="nZ5-a1-zPF" secondAttribute="trailing" id="vNj-Go-ITd"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellImage" destination="nZ5-a1-zPF" id="hwf-rg-kgc"/>
+                                            <outlet property="dateLabel" destination="n0O-L7-1FY" id="ZUr-w9-dMn"/>
+                                            <outlet property="likeButton" destination="VrP-wC-aUD" id="x6m-hi-T28"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
