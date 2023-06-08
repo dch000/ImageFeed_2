@@ -6,6 +6,10 @@ class ImagesListViewController: UIViewController {
     private let photosName: [String] = Array(0..<14).map{"\($0)"}
     private let nameLikeButtonOn = "like_button_on"
     private let nameLikeButtonOff = "like_button_off"
+        
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,14 +17,23 @@ class ImagesListViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowSingleImage" {
+            let viewController = segue.destination as! SingleImageViewController
+            let indexPath = sender as! IndexPath
+            let image = UIImage(named: photosName[indexPath.row])
+            viewController.imageView.image = image
+        } else {
+            super.prepare(for: segue, sender: sender)
+        }
     }
     
 }
 
 extension ImagesListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowSingleImage", sender: indexPath)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let image = UIImage(named: photosName[indexPath.row]) else {
@@ -67,3 +80,5 @@ extension ImagesListViewController {
         
     }
 }
+
+

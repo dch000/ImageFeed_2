@@ -88,11 +88,43 @@
                     <navigationItem key="navigationItem" id="69G-8E-5wS"/>
                     <connections>
                         <outlet property="tableView" destination="LRz-3E-2Tn" id="9CK-zv-8lj"/>
+                        <segue destination="jz7-l4-Vek" kind="show" identifier="ShowSingleImage" id="k67-rE-5XU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4631.2977099236641" y="-344.36619718309862"/>
+            <point key="canvasLocation" x="-4622" y="-344"/>
+        </scene>
+        <!--Single Image View Controller-->
+        <scene sceneID="a2n-Kh-rJ1">
+            <objects>
+                <viewController id="jz7-l4-Vek" customClass="SingleImageViewController" customModule="ImageFeed_2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3hD-mC-r9c">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="GXd-gR-Co5">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aHo-cU-HWi"/>
+                        <color key="backgroundColor" name="YP Black"/>
+                        <color key="tintColor" name="YP White"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GXd-gR-Co5" secondAttribute="trailing" id="0DY-gg-W9b"/>
+                            <constraint firstAttribute="bottom" secondItem="GXd-gR-Co5" secondAttribute="bottom" constant="34" id="Wpr-vb-Z6Y"/>
+                            <constraint firstItem="GXd-gR-Co5" firstAttribute="top" secondItem="3hD-mC-r9c" secondAttribute="top" id="pNV-7u-35j"/>
+                            <constraint firstItem="GXd-gR-Co5" firstAttribute="leading" secondItem="3hD-mC-r9c" secondAttribute="leading" id="vcB-aX-XtK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="r9E-Qk-DaH"/>
+                    <connections>
+                        <outlet property="imageView" destination="GXd-gR-Co5" id="kmQ-iU-erF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILm-ih-PFb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3752" y="-344"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mQs-Kk-RZ3">
@@ -116,7 +148,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QD-0f-oNO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7166" y="15"/>
+            <point key="canvasLocation" x="-6673" y="2"/>
         </scene>
         <!--Profile-->
         <scene sceneID="HSy-xl-33a">
@@ -229,6 +261,7 @@
     </scenes>
     <resources>
         <image name="0" width="1920" height="1080"/>
+        <image name="4" width="1920" height="1080"/>
         <image name="ipad.and.arrow.forward" width="20" height="22"/>
         <image name="like_button_on" width="42" height="42"/>
         <image name="tab_editorial_active" width="20" height="22"/>
