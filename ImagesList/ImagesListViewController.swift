@@ -2,7 +2,10 @@
 import UIKit
 
 class ImagesListViewController: UIViewController {
+    var image: UIImage!
+    
     @IBOutlet private var tableView: UITableView!
+    
     private let photosName: [String] = Array(0..<14).map{"\($0)"}
     private let nameLikeButtonOn = "like_button_on"
     private let nameLikeButtonOff = "like_button_off"
@@ -13,6 +16,7 @@ class ImagesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //imageView.image = image
         
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
