@@ -87,7 +87,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="69G-8E-5wS"/>
                     <connections>
-                        <outlet property="imageView" destination="nZ5-a1-zPF" id="xLe-PN-aHg"/>
                         <outlet property="tableView" destination="LRz-3E-2Tn" id="9CK-zv-8lj"/>
                         <segue destination="jz7-l4-Vek" kind="show" identifier="ShowSingleImage" id="k67-rE-5XU"/>
                     </connections>

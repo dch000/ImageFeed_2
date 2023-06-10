@@ -2,13 +2,13 @@
 import UIKit
 
 class ImagesListViewController: UIViewController {
-    var image: UIImage!
     
     @IBOutlet private var tableView: UITableView!
     
     private let photosName: [String] = Array(0..<14).map{"\($0)"}
     private let nameLikeButtonOn = "like_button_on"
     private let nameLikeButtonOff = "like_button_off"
+    private let ShowSingleImageSegueIdentifier = "ShowSingleImage"
         
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -16,17 +16,16 @@ class ImagesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //imageView.image = image
         
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSingleImage" {
+        if segue.identifier == ShowSingleImageSegueIdentifier {
             let viewController = segue.destination as! SingleImageViewController
             let indexPath = sender as! IndexPath
             let image = UIImage(named: photosName[indexPath.row])
-            viewController.imageView.image = image
+            viewController.image = image
         } else {
             super.prepare(for: segue, sender: sender)
         }
@@ -36,7 +35,7 @@ class ImagesListViewController: UIViewController {
 
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowSingleImage", sender: indexPath)
+        performSegue(withIdentifier: ShowSingleImageSegueIdentifier, sender: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
