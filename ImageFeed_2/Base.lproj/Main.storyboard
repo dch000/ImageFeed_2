@@ -113,8 +113,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="GXd-gR-Co5" firstAttribute="leading" secondItem="dx7-yI-Shc" secondAttribute="leading" id="DVi-RT-QO8"/>
-                                    <constraint firstItem="GXd-gR-Co5" firstAttribute="top" secondItem="dx7-yI-Shc" secondAttribute="top" constant="45" id="RgL-qI-lv0"/>
-                                    <constraint firstAttribute="bottom" secondItem="GXd-gR-Co5" secondAttribute="bottom" constant="546" id="f0x-YG-Kah"/>
+                                    <constraint firstItem="GXd-gR-Co5" firstAttribute="top" secondItem="dx7-yI-Shc" secondAttribute="top" id="RgL-qI-lv0"/>
+                                    <constraint firstAttribute="bottom" secondItem="GXd-gR-Co5" secondAttribute="bottom" id="f0x-YG-Kah"/>
                                     <constraint firstAttribute="trailing" secondItem="GXd-gR-Co5" secondAttribute="trailing" id="m8u-on-R9O"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="3hW-h4-iwE"/>
