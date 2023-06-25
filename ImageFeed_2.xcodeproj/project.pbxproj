@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0FFFAA2A473C46003EF4B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FFFA92A473C46003EF4B8 /* Constants.swift */; };
 		8B5EC2572A323C93004098A8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EC2562A323C93004098A8 /* ProfileViewController.swift */; };
 		8B5EC25A2A325E87004098A8 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EC2592A325E87004098A8 /* SingleImageViewController.swift */; };
 		8B7A04C52A233FCA00047F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A04C42A233FCA00047F2F /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B0FFFA92A473C46003EF4B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B5EC2562A323C93004098A8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8B5EC2592A325E87004098A8 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		8B7A04C12A233FCA00047F2F /* ImageFeed_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 		8B7A04B82A233FCA00047F2F = {
 			isa = PBXGroup;
 			children = (
+				8B0FFFA92A473C46003EF4B8 /* Constants.swift */,
 				8B5EC25B2A326180004098A8 /* Single Image */,
 				8B7A04DA2A23477A00047F2F /* Other */,
 				8B5EC2582A3245D2004098A8 /* Profile */,
@@ -193,6 +196,7 @@
 				8B7A04D92A23474E00047F2F /* UIColor+Extensions.swift in Sources */,
 				8B5EC25A2A325E87004098A8 /* SingleImageViewController.swift in Sources */,
 				8B7A04FF2A268C2D00047F2F /* Date+Extensions.swift in Sources */,
+				8B0FFFAA2A473C46003EF4B8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
