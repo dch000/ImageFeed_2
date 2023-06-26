@@ -78,10 +78,6 @@
 		8B7A04B82A233FCA00047F2F = {
 			isa = PBXGroup;
 			children = (
-				8B7A04CA2A233FCA00047F2F /* Main.storyboard */,
-				8B7A04CD2A233FCC00047F2F /* Assets.xcassets */,
-				8B7A04CF2A233FCC00047F2F /* LaunchScreen.storyboard */,
-				8B7A04D22A233FCC00047F2F /* Info.plist */,
 				8B0FFFAB2A49FE80003EF4B8 /* Auth */,
 				8B5EC25B2A326180004098A8 /* Single Image */,
 				8B7A04DA2A23477A00047F2F /* Other */,
@@ -103,6 +99,10 @@
 		8B7A04C32A233FCA00047F2F /* ImageFeed_2 */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A04CA2A233FCA00047F2F /* Main.storyboard */,
+				8B7A04CD2A233FCC00047F2F /* Assets.xcassets */,
+				8B7A04CF2A233FCC00047F2F /* LaunchScreen.storyboard */,
+				8B7A04D22A233FCC00047F2F /* Info.plist */,
 				8B7A04C42A233FCA00047F2F /* AppDelegate.swift */,
 				8B0FFFA92A473C46003EF4B8 /* Constants.swift */,
 				8B7A04C62A233FCA00047F2F /* SceneDelegate.swift */,
