@@ -279,7 +279,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLg-5u-IZx">
-                                <rect key="frame" x="9" y="30" width="24" height="24"/>
+                                <rect key="frame" x="9" y="8" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="XZo-v4-xF3"/>
                                     <constraint firstAttribute="height" constant="24" id="dw8-kb-P0W"/>
@@ -290,19 +290,27 @@
                                     <action selector="didTapBackButton:" destination="tes-in-Kcx" eventType="touchUpInside" id="Hdw-ql-GC4"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fyd-g9-e1q">
+                                <rect key="frame" x="0.0" y="40" width="393" height="4"/>
+                                <color key="progressTintColor" name="YP Black"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UFJ-fN-40f"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DaQ-UQ-zla" firstAttribute="top" secondItem="JCA-GM-hhs" secondAttribute="top" id="3m9-sH-sNT"/>
+                            <constraint firstAttribute="trailing" secondItem="Fyd-g9-e1q" secondAttribute="trailing" id="6BN-zA-jMh"/>
+                            <constraint firstItem="Fyd-g9-e1q" firstAttribute="top" secondItem="qLg-5u-IZx" secondAttribute="bottom" constant="8" id="ABs-xY-7PX"/>
+                            <constraint firstItem="Fyd-g9-e1q" firstAttribute="leading" secondItem="JCA-GM-hhs" secondAttribute="leading" id="FoF-z0-2VS"/>
                             <constraint firstAttribute="bottom" secondItem="DaQ-UQ-zla" secondAttribute="bottom" id="JGI-Sr-DRT"/>
                             <constraint firstAttribute="trailing" secondItem="DaQ-UQ-zla" secondAttribute="trailing" id="P1I-PC-bMm"/>
-                            <constraint firstItem="qLg-5u-IZx" firstAttribute="top" secondItem="UFJ-fN-40f" secondAttribute="top" constant="30" id="TqS-Vz-xPE"/>
+                            <constraint firstItem="qLg-5u-IZx" firstAttribute="top" secondItem="UFJ-fN-40f" secondAttribute="top" constant="8" id="TqS-Vz-xPE"/>
                             <constraint firstItem="DaQ-UQ-zla" firstAttribute="leading" secondItem="JCA-GM-hhs" secondAttribute="leading" id="Ys3-Xe-eXc"/>
                             <constraint firstItem="qLg-5u-IZx" firstAttribute="leading" secondItem="UFJ-fN-40f" secondAttribute="leading" constant="9" id="yOh-C3-fv8"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="progressView" destination="Fyd-g9-e1q" id="yJp-Qe-gsY"/>
                         <outlet property="webView" destination="DaQ-UQ-zla" id="m0T-vF-hVb"/>
                     </connections>
                 </viewController>
