@@ -21,6 +21,7 @@
 		8B7A04FC2A23C22400047F2F /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A04FB2A23C22400047F2F /* ImagesListCell.swift */; };
 		8B7A04FF2A268C2D00047F2F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A04FE2A268C2D00047F2F /* Date+Extensions.swift */; };
 		8B91B6CC2A4A0666003314AC /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6CB2A4A0666003314AC /* WebViewViewController.swift */; };
+		8B91B6CE2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6CD2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		8B7A04FB2A23C22400047F2F /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		8B7A04FE2A268C2D00047F2F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		8B91B6CB2A4A0666003314AC /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		8B91B6CD2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				8B0FFFAC2A49FE91003EF4B8 /* AuthViewController.swift */,
+				8B91B6CD2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift */,
 				8B91B6CB2A4A0666003314AC /* WebViewViewController.swift */,
 			);
 			path = Auth;
@@ -211,6 +214,7 @@
 				8B7A04D92A23474E00047F2F /* UIColor+Extensions.swift in Sources */,
 				8B5EC25A2A325E87004098A8 /* SingleImageViewController.swift in Sources */,
 				8B7A04FF2A268C2D00047F2F /* Date+Extensions.swift in Sources */,
+				8B91B6CE2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift in Sources */,
 				8B91B6CC2A4A0666003314AC /* WebViewViewController.swift in Sources */,
 				8B0FFFAA2A473C46003EF4B8 /* Constants.swift in Sources */,
 			);
