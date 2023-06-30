@@ -22,6 +22,9 @@
 		8B7A04FF2A268C2D00047F2F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A04FE2A268C2D00047F2F /* Date+Extensions.swift */; };
 		8B91B6CC2A4A0666003314AC /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6CB2A4A0666003314AC /* WebViewViewController.swift */; };
 		8B91B6CE2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6CD2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift */; };
+		8B91B6D02A4F5A4B003314AC /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6CF2A4F5A4B003314AC /* OAuth2Service.swift */; };
+		8B91B6D22A4F5AD7003314AC /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6D12A4F5AD7003314AC /* OAuth2TokenStorage.swift */; };
+		8B91B6D42A4F61CA003314AC /* OAuthTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6D32A4F61CA003314AC /* OAuthTokenResponseBody.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		8B7A04FE2A268C2D00047F2F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		8B91B6CB2A4A0666003314AC /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		8B91B6CD2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewControllerDelegate.swift; sourceTree = "<group>"; };
+		8B91B6CF2A4F5A4B003314AC /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
+		8B91B6D12A4F5AD7003314AC /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
+		8B91B6D32A4F61CA003314AC /* OAuthTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponseBody.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 				8B0FFFAC2A49FE91003EF4B8 /* AuthViewController.swift */,
 				8B91B6CD2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift */,
 				8B91B6CB2A4A0666003314AC /* WebViewViewController.swift */,
+				8B91B6CF2A4F5A4B003314AC /* OAuth2Service.swift */,
+				8B91B6D12A4F5AD7003314AC /* OAuth2TokenStorage.swift */,
+				8B91B6D32A4F61CA003314AC /* OAuthTokenResponseBody.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -207,9 +216,11 @@
 			files = (
 				8B7A04C92A233FCA00047F2F /* ImagesListViewController.swift in Sources */,
 				8B7A04C52A233FCA00047F2F /* AppDelegate.swift in Sources */,
+				8B91B6D02A4F5A4B003314AC /* OAuth2Service.swift in Sources */,
 				8B0FFFAD2A49FE91003EF4B8 /* AuthViewController.swift in Sources */,
 				8B7A04FC2A23C22400047F2F /* ImagesListCell.swift in Sources */,
 				8B7A04C72A233FCA00047F2F /* SceneDelegate.swift in Sources */,
+				8B91B6D22A4F5AD7003314AC /* OAuth2TokenStorage.swift in Sources */,
 				8B5EC2572A323C93004098A8 /* ProfileViewController.swift in Sources */,
 				8B7A04D92A23474E00047F2F /* UIColor+Extensions.swift in Sources */,
 				8B5EC25A2A325E87004098A8 /* SingleImageViewController.swift in Sources */,
@@ -217,6 +228,7 @@
 				8B91B6CE2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift in Sources */,
 				8B91B6CC2A4A0666003314AC /* WebViewViewController.swift in Sources */,
 				8B0FFFAA2A473C46003EF4B8 /* Constants.swift in Sources */,
+				8B91B6D42A4F61CA003314AC /* OAuthTokenResponseBody.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
