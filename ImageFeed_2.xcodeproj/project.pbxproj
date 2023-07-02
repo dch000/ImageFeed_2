@@ -25,6 +25,7 @@
 		8B91B6D02A4F5A4B003314AC /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6CF2A4F5A4B003314AC /* OAuth2Service.swift */; };
 		8B91B6D22A4F5AD7003314AC /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6D12A4F5AD7003314AC /* OAuth2TokenStorage.swift */; };
 		8B91B6D42A4F61CA003314AC /* OAuthTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6D32A4F61CA003314AC /* OAuthTokenResponseBody.swift */; };
+		8B91B6D62A51FA7D003314AC /* AuthViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B6D52A51FA7D003314AC /* AuthViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		8B91B6CF2A4F5A4B003314AC /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
 		8B91B6D12A4F5AD7003314AC /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
 		8B91B6D32A4F61CA003314AC /* OAuthTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponseBody.swift; sourceTree = "<group>"; };
+		8B91B6D52A51FA7D003314AC /* AuthViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				8B0FFFAC2A49FE91003EF4B8 /* AuthViewController.swift */,
+				8B91B6D52A51FA7D003314AC /* AuthViewControllerDelegate.swift */,
 				8B91B6CD2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift */,
 				8B91B6CB2A4A0666003314AC /* WebViewViewController.swift */,
 				8B91B6CF2A4F5A4B003314AC /* OAuth2Service.swift */,
@@ -228,6 +231,7 @@
 				8B91B6CE2A4DF9F6003314AC /* WebViewViewControllerDelegate.swift in Sources */,
 				8B91B6CC2A4A0666003314AC /* WebViewViewController.swift in Sources */,
 				8B0FFFAA2A473C46003EF4B8 /* Constants.swift in Sources */,
+				8B91B6D62A51FA7D003314AC /* AuthViewControllerDelegate.swift in Sources */,
 				8B91B6D42A4F61CA003314AC /* OAuthTokenResponseBody.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
