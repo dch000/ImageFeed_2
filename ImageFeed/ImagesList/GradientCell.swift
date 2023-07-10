@@ -1,10 +1,3 @@
-//
-//  GradientCell.swift
-//  ImageFeed
-//
-//  Created by User on 22.02.2023.
-//
-
 import UIKit
 
 class GradientCell: UIView {
