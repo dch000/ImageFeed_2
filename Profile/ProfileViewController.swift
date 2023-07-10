@@ -4,8 +4,8 @@ final class ProfileViewController: UIViewController {
     
     private var nameLabel: UILabel?
     private var loginNameLabel: UILabel?
-    private var desriptionLabel: UILabel?
-    private var profileImage: UIImage?
+    private var descriptionLabel: UILabel?
+    private var profileImage : UIImage?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -14,8 +14,8 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Profile image
-        let profileImage = UIImage(named: "userpick")
+        //Profile Image
+        let profileImage = UIImage(named: "Photo")
         let imageView = UIImageView(image: profileImage)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(imageView)
@@ -30,14 +30,14 @@ final class ProfileViewController: UIViewController {
         let nameLabel = UILabel()
         nameLabel.text = "Екатерина Новикова"
         nameLabel.textColor = .white
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 23)
+        nameLabel.font = UIFont.systemFont(ofSize: 23)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameLabel)
         nameLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
         nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8).isActive = true
         self.nameLabel = nameLabel
         
-        //Login Name
+        //Login name
         let loginNameLabel = UILabel()
         loginNameLabel.text = "@ekaterina_nov"
         loginNameLabel.textColor = .gray
@@ -49,18 +49,18 @@ final class ProfileViewController: UIViewController {
         self.loginNameLabel = loginNameLabel
         
         //Description
-        let desriptionLabel = UILabel()
-        desriptionLabel.text = "Hello World!"
-        desriptionLabel.textColor = .white
-        desriptionLabel.font = UIFont.systemFont(ofSize: 13)
-        desriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(desriptionLabel)
-        desriptionLabel.leadingAnchor.constraint(equalTo: loginNameLabel.leadingAnchor).isActive = true
-        desriptionLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 8).isActive = true
-        self.desriptionLabel = desriptionLabel
+        let descriptionLabel = UILabel()
+        descriptionLabel.text = "Hello World!"
+        descriptionLabel.textColor = .white
+        descriptionLabel.font = UIFont.systemFont(ofSize: 13)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(descriptionLabel)
+        descriptionLabel.leadingAnchor.constraint(equalTo: loginNameLabel.leadingAnchor).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 8).isActive = true
+        self.descriptionLabel = descriptionLabel
         
         //Logout Button
-        let logoutButton = UIButton.systemButton(with: UIImage(named:"ipad.and.arrow.forward")!, target: self, action: #selector(self.didTapButton))
+        let logoutButton = UIButton.systemButton(with: UIImage(systemName: "ipad.and.arrow.forward")!, target: self, action: #selector(self.didTapButton))
         logoutButton.tintColor = .red
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(logoutButton)
@@ -74,3 +74,5 @@ final class ProfileViewController: UIViewController {
     private func didTapButton() {}
     
 }
+
+
