@@ -2,6 +2,8 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
     
+    private let profileService = ProfileService.shared
+    
     private lazy var avatarTemp: UIImageView = {
         let avatarTemp = UIImageView()
         avatarTemp.image = Res.Images.Profile.tempAvatar
@@ -12,7 +14,6 @@ final class ProfileViewController: UIViewController {
         let profileName = UILabel()
         profileName.font = UIFont.systemFont(ofSize: 21, weight: .bold)
         profileName.textColor = .white
-        profileName.text = "Екатерина Новикова"
         return profileName
     } ()
     
@@ -20,7 +21,6 @@ final class ProfileViewController: UIViewController {
         let profileTag = UILabel()
         profileTag.font = UIFont.systemFont(ofSize: 13)
         profileTag.textColor = Res.Colors.tagColor
-        profileTag.text = "@ekaterina_nov"
         return profileTag
     } ()
     
@@ -28,7 +28,6 @@ final class ProfileViewController: UIViewController {
         let profileInfo = UILabel()
         profileInfo.font = UIFont.systemFont(ofSize: 13)
         profileInfo.textColor = .white
-        profileInfo.text = "Hello, world!"
         return profileInfo
     } ()
     
@@ -41,6 +40,13 @@ final class ProfileViewController: UIViewController {
         logoutButton.tintColor = Res.Colors.buttonColor
         return logoutButton
     } ()
+    
+    private func updateProfileDetails() {
+        guard let profile = profileService.profile else {return}
+        profileName.text = profileService.profile?.name
+        profileTag.text = profileService.profile?.loginName
+        profileInfo.text = profileService.profile?.bio
+    }
     
     private func addViews() {
         [avatarTemp,
@@ -82,5 +88,6 @@ final class ProfileViewController: UIViewController {
         view.backgroundColor = Res.Colors.backgroundColor
         addViews()
         applyConstraints()
+        updateProfileDetails()
     }
 }
