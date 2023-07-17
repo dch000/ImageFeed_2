@@ -2,9 +2,11 @@ import UIKit
 import ProgressHUD
 
 final class SplashViewController: UIViewController {
+    private var isFirstAppear = true
     private let showAuthenticationScreenSegueIdentifier = "ShowAuthenticationScreen"
     private let oauth2Service = OAuth2Service()
     private let oauth2TokenStorage = OAuth2TokenStorage()
+    private let profileService = ProfileService.shared
     
     private func switchToTabBarController() {
         guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
@@ -19,11 +21,27 @@ final class SplashViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        /*
         if oauth2TokenStorage.token != nil {
             switchToTabBarController()
         } else {
             performSegue(withIdentifier: showAuthenticationScreenSegueIdentifier, sender: nil)
+        }
+         */
+        if isFirstAppear == true {
+            if oauth2TokenStorage.token != nil {
+                guard let token = oauth2TokenStorage.token else { return }
+                fetchProfile(token: token)
+                switchToTabBarController()
+            } else {
+                isFirstAppear = false
+                guard let authViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController else {
+                    return }
+                authViewController.delegate = self
+                authViewController.modalPresentationStyle = .fullScreen
+                present(authViewController, animated: true)
+                
+            }
         }
     }
     
@@ -74,4 +92,20 @@ extension SplashViewController: AuthViewControllerDelegate {
             }
         }
     }
+    
+    private func fetchProfile(token: String) {
+        profileService.fetchProfile(token) { [weak self] result in
+            guard let self = self else {return}
+            switch result {
+            case .success(let userProfile):
+                //TODO: avatar
+                self.switchToTabBarController()
+            case .failure:
+                break
+            }
+            UIBlockingProgressHUD.dismiss()
+                
+                }
+    }
+    
 }

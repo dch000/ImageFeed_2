@@ -37,10 +37,10 @@ final class ProfileService {
             self.task = nil
             switch result {
             case .success(let profileResult):
-                self.profile = Profile(username: profileResult.username ?? "",
-                                       name: "\(profileResult.firstname ?? "") \(profileResult.lastname ?? "") ",
-                                       loginName: "@\(profileResult.username ?? "")",
-                                       bio: profileResult.bio ?? "")
+                self.profile = Profile(username: profileResult.username ?? "Test UN",
+                                       name: "\(profileResult.firstname ?? "") \(profileResult.lastname ?? "Test User Name") ",
+                                       loginName: "@\(profileResult.username ?? "Test login name")",
+                                       bio: profileResult.bio ?? "Test BIO")
                 //TODO: profile image
                 print("\(String(describing: self.profile))")
                 completion(.success(self.profile!))

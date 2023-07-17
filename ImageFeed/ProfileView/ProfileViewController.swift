@@ -84,10 +84,17 @@ final class ProfileViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateProfileDetails()
+        //TODO: avatar
+    }
+    
     override func viewDidLoad() {
         view.backgroundColor = Res.Colors.backgroundColor
         addViews()
         applyConstraints()
         updateProfileDetails()
+        //TODO: avatar
     }
 }
