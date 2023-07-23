@@ -37,7 +37,7 @@ final class ProfileImageService{
                 NotificationCenter.default
                     .post(
                         name: ProfileImageService.DidChangeNotification,
-                    object: self,
+                        object: self,
                         userInfo: ["URL": self.avatarURL as Any])
             case .failure(let error):
                 completion(.failure(error))

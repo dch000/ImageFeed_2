@@ -3,6 +3,7 @@ import UIKit
 final class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
     
     private lazy var avatarTemp: UIImageView = {
         let avatarTemp = UIImageView()
@@ -48,6 +49,15 @@ final class ProfileViewController: UIViewController {
         profileInfo.text = profileService.profile?.bio
     }
     
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else {return}
+        // TODO: обновить аватар используя кингфишер
+        
+    }
+    
     private func addViews() {
         [avatarTemp,
          profileName,
@@ -87,7 +97,7 @@ final class ProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateProfileDetails()
-        //TODO: avatar
+        updateAvatar()
     }
     
     override func viewDidLoad() {
@@ -95,6 +105,15 @@ final class ProfileViewController: UIViewController {
         addViews()
         applyConstraints()
         updateProfileDetails()
-        //TODO: avatar
+        updateAvatar()
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(forName: ProfileImageService.DidChangeNotification,
+                         object: nil,
+                         queue: .main
+            ) {[weak self] _ in
+                guard let self = self else {return}
+                self.updateAvatar()
+            }
+        updateAvatar()
     }
 }

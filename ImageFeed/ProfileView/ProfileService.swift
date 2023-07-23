@@ -5,6 +5,7 @@ final class ProfileService {
     static let shared = ProfileService()
     private var task: URLSessionTask?
     private (set) var profile: Profile?
+    private let profileImageService = ProfileImageService.shared
     
     
     struct ProfileResult: Decodable {
