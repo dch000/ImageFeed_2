@@ -18,17 +18,20 @@ final class SplashViewController: UIViewController {
         window.rootViewController = tabBarController
        
     }
+    
+    private func showAlert() {
+        let alertController = UIAlertController(title: "Что-то пошло не так",
+                                                message: "Не удалось войти в систему",
+                                                preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok",
+                                   style: .default)
+        alertController.addAction(action)
+        present(alertController, animated: true)
+    }
  
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        /*
-        if oauth2TokenStorage.token != nil {
-            switchToTabBarController()
-        } else {
-            performSegue(withIdentifier: showAuthenticationScreenSegueIdentifier, sender: nil)
-        }
-         */
         if isFirstAppear == true {
             if oauth2TokenStorage.token != nil {
                 guard let token = oauth2TokenStorage.token else { return }
@@ -57,7 +60,7 @@ final class SplashViewController: UIViewController {
     }
 }
 
-
+/*
 extension SplashViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showAuthenticationScreenSegueIdentifier {
@@ -71,6 +74,7 @@ extension SplashViewController {
         }
     }
 }
+ */
 
 extension SplashViewController: AuthViewControllerDelegate {
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
@@ -78,35 +82,33 @@ extension SplashViewController: AuthViewControllerDelegate {
         dismiss(animated: true) { [weak self] in
             guard let self = self else {return}
             self.fetchOAuthToken(code)
+            
         }
     }
     private func fetchOAuthToken(_ code: String) {
         oauth2Service.fetchOAuthToken(code) { [weak self] result in
-            
             guard let self = self else { return }
             switch result {
-            case .success:
-                self.switchToTabBarController()
+            case .success(let token):
+                self.fetchProfile(token: token)
             case .failure:
+                self.showAlert()
                 UIBlockingProgressHUD.dismiss()
-                break
             }
         }
     }
     
     private func fetchProfile(token: String) {
         profileService.fetchProfile(token) { [weak self] result in
-            guard let self = self else {return}
+            guard let self = self else { return }
             switch result {
             case .success(let userProfile):
-                self.profileImageService.fetchProfileImageURL(token, username: userProfile.username) {_ in} 
+                self.profileImageService.fetchProfileImageURL(token, username: userProfile.username) { _ in }
                 self.switchToTabBarController()
             case .failure:
                 break
             }
             UIBlockingProgressHUD.dismiss()
-                
-                }
+        }
     }
-    
 }
