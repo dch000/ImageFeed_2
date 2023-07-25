@@ -1,24 +1,23 @@
 import UIKit
+import SwiftKeychainWrapper
 
-class OAuth2TokenStorage {
-    var bearerToken = "Token"
+final class OAuth2TokenStorage {
+    static let bearerToken = "Token"
     
-    //    var token: String? {
-    //        get {
-    //            UserDefaults.standard.string(forKey: bearerToken)
-    //        }
-    //        set {
-    //            return UserDefaults.standard.set(newValue, forKey: bearerToken)
-    //            }
-    //        }
-    //    }
-    
-    var token: String? {
+    static var token: String? {
         set {
-            return UserDefaults.standard.set(newValue, forKey: bearerToken)
+            guard let token = newValue else {
+                KeychainWrapper.standard.removeObject(forKey: bearerToken)
+                return
+            }
+            let isSucces = KeychainWrapper.standard.set(token, forKey: bearerToken)
+            guard isSucces else {
+                fatalError("Код не сохранен")
+            }
         }
         get {
-            UserDefaults.standard.string(forKey: bearerToken)
+            KeychainWrapper.standard.string(forKey: bearerToken)
         }
     }
+    
 }

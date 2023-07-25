@@ -1,14 +1,14 @@
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
-    
-    private lazy var avatarTemp: UIImageView = {
-        let avatarTemp = UIImageView()
-        avatarTemp.image = Res.Images.Profile.tempAvatar
-        return avatarTemp
+        
+    private lazy var avatarView: UIImageView = {
+        let avatarView = UIImageView()
+        return avatarView
     } ()
     
     private lazy var profileName: UILabel = {
@@ -54,12 +54,24 @@ final class ProfileViewController: UIViewController {
             let profileImageURL = ProfileImageService.shared.avatarURL,
             let url = URL(string: profileImageURL)
         else {return}
-        // TODO: обновить аватар используя кингфишер
-        
+        let processor = RoundCornerImageProcessor(cornerRadius: 35, backgroundColor: .clear)
+        avatarView.kf.indicatorType = .activity
+        avatarView.kf.setImage(with: url, placeholder: UIImage(named: "default_avatar"),
+                               options: [.processor(processor),
+                                         .cacheSerializer(FormatIndicatedCacheSerializer.png)]) {result in
+                                             switch result {
+                                             case.success(let value):
+                                                 print(value.image)
+                                                 print(value.cacheType)
+                                                 print(value.source)
+                                             case .failure(let error):
+                                                 print(error)
+                                             }
+        }
     }
     
     private func addViews() {
-        [avatarTemp,
+        [avatarView,
          profileName,
          profileTag,
          profileInfo,
@@ -68,13 +80,13 @@ final class ProfileViewController: UIViewController {
     
     private func applyConstraints() {
         NSLayoutConstraint.activate([
-            avatarTemp.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-            avatarTemp.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            avatarTemp.heightAnchor.constraint(equalToConstant: 70),
-            avatarTemp.widthAnchor.constraint(equalToConstant: 70),
+            avatarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            avatarView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            avatarView.heightAnchor.constraint(equalToConstant: 70),
+            avatarView.widthAnchor.constraint(equalToConstant: 70),
             
-            profileName.topAnchor.constraint(equalTo: avatarTemp.bottomAnchor, constant: 8),
-            profileName.leadingAnchor.constraint(equalTo: avatarTemp.leadingAnchor),
+            profileName.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 8),
+            profileName.leadingAnchor.constraint(equalTo: avatarView.leadingAnchor),
             profileName.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 16),
             
             profileTag.topAnchor.constraint(equalTo: profileName.bottomAnchor, constant: 8),
@@ -86,7 +98,7 @@ final class ProfileViewController: UIViewController {
             profileInfo.trailingAnchor.constraint(equalTo: profileName.trailingAnchor),
             
             logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            logoutButton.centerYAnchor.constraint(equalTo: avatarTemp.centerYAnchor),
+            logoutButton.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor),
         ])
     }
     
