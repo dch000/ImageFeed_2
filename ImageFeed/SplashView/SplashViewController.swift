@@ -9,14 +9,21 @@ final class SplashViewController: UIViewController {
     private let profileService = ProfileService.shared
     private let profileImageService = ProfileImageService.shared
     
+    private lazy var screenLogo: UIImageView = {
+        let screenLogo = UIImageView()
+        screenLogo.translatesAutoresizingMaskIntoConstraints = false
+        screenLogo.image = UIImage(named: "splash_screen_logo")
+        return screenLogo
+    } ()
+    
     private func switchToTabBarController() {
         guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
-
+        
         let tabBarController = UIStoryboard(name: "Main", bundle: .main)
             .instantiateViewController(withIdentifier: "TabBarViewController")
-
+        
         window.rootViewController = tabBarController
-       
+        
     }
     
     private func showAlert() {
@@ -28,7 +35,7 @@ final class SplashViewController: UIViewController {
         alertController.addAction(action)
         present(alertController, animated: true)
     }
- 
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -50,31 +57,30 @@ final class SplashViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        addViews()
+        applyConstraints()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
-}
-
-/*
-extension SplashViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == showAuthenticationScreenSegueIdentifier {
-            guard
-                let navigationController = segue.destination as? UINavigationController,
-                let viewController = navigationController.viewControllers[0] as? AuthViewController
-            else { fatalError("Failed to prepare for \(showAuthenticationScreenSegueIdentifier)") }
-            viewController.delegate = self
-        } else {
-            super.prepare(for: segue, sender: sender)
-        }
+    
+    private func addViews() {
+        view.addSubview(screenLogo)
     }
+    private func applyConstraints() {
+        NSLayoutConstraint.activate([
+            screenLogo.widthAnchor.constraint(equalToConstant: 60),
+            screenLogo.heightAnchor.constraint(equalToConstant: 60),
+            screenLogo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            screenLogo.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
 }
- */
 
 extension SplashViewController: AuthViewControllerDelegate {
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
