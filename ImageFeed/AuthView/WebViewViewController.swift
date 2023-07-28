@@ -2,7 +2,9 @@ import UIKit
 import WebKit
 
 final class WebViewViewController: UIViewController {
-   
+    
+    weak var delegate: WebViewViewControllerDelegate?
+    
     @IBOutlet private var webView: WKWebView!
     
     @IBAction private func didTapButton(_ sender: Any?) {
@@ -11,28 +13,7 @@ final class WebViewViewController: UIViewController {
     
     @IBOutlet private var progressView: UIProgressView!
     
-    weak var delegate: WebViewViewControllerDelegate?
     private var estimatedProgressObservation: NSKeyValueObservation?
-    
-    private func updateProgress() {
-        progressView.progress = Float(webView.estimatedProgress)
-        progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
-    }
-    
-    private func webViewLoad() {
-        var urlComponents = URLComponents(string: "https://unsplash.com/oauth/authorize")!
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constants.accessScope)
-        ]
-        
-        guard let url = urlComponents.url else {return}
-        let request = URLRequest(url:url)
-        webView.load(request)
-        updateProgress()
-    }
     
     override func observeValue(forKeyPath keyPath: String?,
                                of object: Any?,
@@ -69,6 +50,26 @@ final class WebViewViewController: UIViewController {
                  guard let self = self else {return}
                  self.updateProgress()
              })
+    }
+    
+    private func updateProgress() {
+        progressView.progress = Float(webView.estimatedProgress)
+        progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
+    }
+    
+    private func webViewLoad() {
+        var urlComponents = URLComponents(string: "https://unsplash.com/oauth/authorize")!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: Constants.accessKey),
+            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
+            URLQueryItem(name: "response_type", value: "code"),
+            URLQueryItem(name: "scope", value: Constants.accessScope)
+        ]
+        
+        guard let url = urlComponents.url else {return}
+        let request = URLRequest(url:url)
+        webView.load(request)
+        updateProgress()
     }
 }
 

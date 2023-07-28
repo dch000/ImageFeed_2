@@ -1,6 +1,6 @@
 import UIKit
 
-enum Res {
+enum Resources {
     enum Colors {
         static let backgroundColor = UIColor(hexString: "#1A1B22")
         static let tagColor = UIColor(hexString: "#AEAFB4")

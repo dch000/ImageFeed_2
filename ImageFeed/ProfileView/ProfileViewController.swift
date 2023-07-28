@@ -21,7 +21,7 @@ final class ProfileViewController: UIViewController {
     private lazy var profileTag: UILabel = {
         let profileTag = UILabel()
         profileTag.font = UIFont.systemFont(ofSize: 13)
-        profileTag.textColor = Res.Colors.tagColor
+        profileTag.textColor = Resources.Colors.tagColor
         return profileTag
     } ()
     
@@ -34,11 +34,11 @@ final class ProfileViewController: UIViewController {
     
     private lazy var logoutButton: UIButton = {
         let logoutButton = UIButton.systemButton(
-            with: Res.Images.Profile.logoutButton ?? UIImage(),
+            with: Resources.Images.Profile.logoutButton ?? UIImage(),
             target: ProfileViewController.self,
             action: #selector(Self.didTapButton)
         )
-        logoutButton.tintColor = Res.Colors.buttonColor
+        logoutButton.tintColor = Resources.Colors.buttonColor
         return logoutButton
     } ()
     
@@ -113,13 +113,13 @@ final class ProfileViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        view.backgroundColor = Res.Colors.backgroundColor
+        view.backgroundColor = Resources.Colors.backgroundColor
         addViews()
         applyConstraints()
         updateProfileDetails()
         updateAvatar()
         profileImageServiceObserver = NotificationCenter.default
-            .addObserver(forName: ProfileImageService.DidChangeNotification,
+            .addObserver(forName: ProfileImageService.didChangeNotification,
                          object: nil,
                          queue: .main
             ) {[weak self] _ in

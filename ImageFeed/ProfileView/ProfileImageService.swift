@@ -3,7 +3,7 @@ import UIKit
 final class ProfileImageService{
     
     static let shared = ProfileImageService()
-    static let DidChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
+    static let didChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
     
     private (set) var avatarURL: String?
     private var task: URLSessionTask?
@@ -23,8 +23,11 @@ final class ProfileImageService{
     public func fetchProfileImageURL(_ token: String, username: String?, completion: @escaping (Result<String?, Error>) -> Void){
         assert(Thread.isMainThread)
         task?.cancel()
-        guard let username = username else {return}
-        guard let request = fetchProfileImageRequest(token, username: username) else {return}
+        guard
+            let username = username,
+            let request = fetchProfileImageRequest(token, username: username)
+        else { return }
+        
         
         let task = URLSession.shared.object(for: request) { [weak self] (result: Result<UserResult,Error>) in
             guard let self = self else {return}
@@ -36,7 +39,7 @@ final class ProfileImageService{
                 completion(.success(self.avatarURL))
                 NotificationCenter.default
                     .post(
-                        name: ProfileImageService.DidChangeNotification,
+                        name: ProfileImageService.didChangeNotification,
                         object: self,
                         userInfo: ["URL": self.avatarURL as Any])
             case .failure(let error):
