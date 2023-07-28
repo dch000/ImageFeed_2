@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B4FF3D42A73F14D00AF5838 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FF3D32A73F14D00AF5838 /* ImagesListService.swift */; };
 		8B69528D2A703001006916E4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8B69528C2A703001006916E4 /* Kingfisher */; };
 		8B6952902A703970006916E4 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8B69528F2A703970006916E4 /* SwiftKeychainWrapper */; };
 		8B6952932A70EC5B006916E4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6952922A70EC5B006916E4 /* TabBarController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B4FF3D32A73F14D00AF5838 /* ImagesListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
 		8B6952922A70EC5B006916E4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8B7DD91C2A6D09540019DCA1 /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
 		8B9158842A5C8AF4008E851A /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		CE4945F729A65131001CE1B4 /* ImagesList */ = {
 			isa = PBXGroup;
 			children = (
+				8B4FF3D32A73F14D00AF5838 /* ImagesListService.swift */,
 				CE70F96529A122FF00716648 /* ImagesListViewController.swift */,
 				CE4945F529A650EA001CE1B4 /* ImagesListCell.swift */,
 				CE4945F829A67F85001CE1B4 /* GradientCell.swift */,
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4FF3D42A73F14D00AF5838 /* ImagesListService.swift in Sources */,
 				CED4F7AB29B6105F00807B78 /* ProfileViewController.swift in Sources */,
 				CE13EFCD29C88B15001E3E76 /* Constants.swift in Sources */,
 				CE70F96629A122FF00716648 /* ImagesListViewController.swift in Sources */,
