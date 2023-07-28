@@ -5,7 +5,7 @@ final class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
-        
+    
     private lazy var avatarView: UIImageView = {
         let avatarView = UIImageView()
         return avatarView
@@ -56,7 +56,8 @@ final class ProfileViewController: UIViewController {
         else {return}
         let processor = RoundCornerImageProcessor(cornerRadius: 35, backgroundColor: .clear)
         avatarView.kf.indicatorType = .activity
-        avatarView.kf.setImage(with: url, placeholder: UIImage(named: "default_avatar"),
+        avatarView.kf.setImage(with: url,
+                               placeholder: UIImage(named: "default_avatar"),
                                options: [.processor(processor),
                                          .cacheSerializer(FormatIndicatedCacheSerializer.png)]) {result in
                                              switch result {
@@ -67,7 +68,7 @@ final class ProfileViewController: UIViewController {
                                              case .failure(let error):
                                                  print(error)
                                              }
-        }
+                                         }
     }
     
     private func addViews() {
@@ -122,7 +123,7 @@ final class ProfileViewController: UIViewController {
             .addObserver(forName: ProfileImageService.didChangeNotification,
                          object: nil,
                          queue: .main
-            ) {[weak self] _ in
+            ) { [weak self] _ in
                 guard let self = self else {return}
                 self.updateAvatar()
             }

@@ -6,7 +6,7 @@ final class OAuth2Service {
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private var lastCode: String?
-
+    
     private (set) var authToken: String? {
         get {
             return OAuth2TokenStorage.token
@@ -15,7 +15,7 @@ final class OAuth2Service {
             OAuth2TokenStorage.token = newValue
         }
     }
-
+    
     func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
         assert(Thread.isMainThread)
         if lastCode == code {return}
@@ -54,7 +54,7 @@ extension OAuth2Service {
             comletion(response)
         }
     }
-
+    
     private func authTokenRequest(code: String) -> URLRequest {
         URLRequest.makeHTTPRequest(
             path: "/oauth/token"
@@ -98,21 +98,21 @@ extension URLSession {
                 comletion(result)
             }
         }
-
+        
         let task = dataTask(with: request, completionHandler: {data, response, error in
             if let data = data,
                let response = response,
                let statusCode = (response as? HTTPURLResponse)?.statusCode
             {
                 if 200 ..< 300 ~= statusCode {
-                        fulfillCompletion(.success(data))
+                    fulfillCompletion(.success(data))
                 } else {
-                        fulfillCompletion(.failure(NetworkError.httpStatusCode(statusCode)))
+                    fulfillCompletion(.failure(NetworkError.httpStatusCode(statusCode)))
                 }
             } else if let error = error {
-                    fulfillCompletion(.failure(NetworkError.urlRequestError(error)))
+                fulfillCompletion(.failure(NetworkError.urlRequestError(error)))
             } else {
-                    fulfillCompletion(.failure(NetworkError.urlSessionError))
+                fulfillCompletion(.failure(NetworkError.urlSessionError))
             }
         })
         task.resume()

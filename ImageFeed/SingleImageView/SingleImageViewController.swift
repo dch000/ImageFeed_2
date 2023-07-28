@@ -11,6 +11,15 @@ final class SingleImageViewController: UIViewController {
     
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private weak var scrollView: UIScrollView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView.image = image
+        rescaleAndeCenterImageScrollView(image: image)
+        scrollView.minimumZoomScale = 0.1
+        scrollView.maximumZoomScale = 1.25
+    }
+    
     @IBAction private func didTapBackButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -36,14 +45,6 @@ final class SingleImageViewController: UIViewController {
         let x = (newContentSize.width - visibleRectSize.width) / 2
         let y = (newContentSize.height - visibleRectSize.height) / 2
         scrollView.setContentOffset(CGPoint(x: x, y: y), animated: false)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imageView.image = image
-        rescaleAndeCenterImageScrollView(image: image)
-        scrollView.minimumZoomScale = 0.1
-        scrollView.maximumZoomScale = 1.25
     }
 }
 

@@ -26,17 +26,6 @@ final class SplashViewController: UIViewController {
         
     }
     
-    private func showAlert() {
-        let alertController = UIAlertController(title: "Что-то пошло не так",
-                                                message: "Не удалось войти в систему",
-                                                preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok",
-                                   style: .default)
-        alertController.addAction(action)
-        present(alertController, animated: true)
-    }
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if isFirstAppear == true {
@@ -51,7 +40,6 @@ final class SplashViewController: UIViewController {
                 authViewController.delegate = self
                 authViewController.modalPresentationStyle = .fullScreen
                 present(authViewController, animated: true)
-                
             }
         }
     }
@@ -80,6 +68,15 @@ final class SplashViewController: UIViewController {
         ])
     }
     
+    private func showAlert() {
+        let alertController = UIAlertController(title: "Что-то пошло не так",
+                                                message: "Не удалось войти в систему",
+                                                preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok",
+                                   style: .default)
+        alertController.addAction(action)
+        present(alertController, animated: true)
+    }
 }
 
 extension SplashViewController: AuthViewControllerDelegate {
