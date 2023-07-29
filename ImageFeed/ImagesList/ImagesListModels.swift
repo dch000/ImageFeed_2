@@ -39,5 +39,5 @@ struct UrlsResult: Decodable {
 }
 
 struct IsLiked: Decodable {
-    let photo: PhotosResult?
+    let photo: PhotoResult?
 }
