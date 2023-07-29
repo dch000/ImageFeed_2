@@ -10,7 +10,7 @@ struct Photo {
     let isLiked: Bool
 }
 
-struct PhotosResult: Decodable {
+struct PhotoResult: Decodable {
     let id: String
     let createdAt: String?
     let welcomeDescription: String?
