@@ -1,8 +1,10 @@
-//
-//  Extension Array.swift
-//  ImageFeed
-//
-//  Created by Дмитрий Чеботарев on 03.08.2023.
-//
-
 import Foundation
+
+extension Array {
+    @discardableResult
+        func replaceElement(oldElement: Int, withElement element: Photo) -> [Photo] {
+        var photos = ImagesListService.shared.photos
+        photos.replaceSubrange(oldElement...oldElement, with: [element])
+        return photos
+    }
+}

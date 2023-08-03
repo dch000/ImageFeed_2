@@ -68,7 +68,7 @@ final class ImagesListService {
             switch result {
             case .success(let photosResults):
                 let isLiked = photosResults.photo?.isLiked ?? false
-                if let index = self.photos.firstIndex(where: {&0.id == photosResults.photo?.id}) {
+                if let index = self.photos.firstIndex(where: { $0.id == photosResults.photo?.id }) {
                     let photo = self.photos[index]
                     let newPhoto = Photo(id: photo.id,
                                          size: photo.size,
@@ -77,13 +77,15 @@ final class ImagesListService {
                                          thumbImageURL: photo.thumbImageURL,
                                          largeImageURL: photo.largeImageURL,
                                          isLiked: isLiked)
-                    self.photos = self.photos.replaceElement
+                    self.photos = self.photos.replaceElement(oldElement: index, withElement: newPhoto)
                 }
+                completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))
-            }}
-        
-            
+            }
+        }
+        self.task = task
+        task.resume()
     }
     
     private func fetchImageListRequest (_ token: String, page: String, perPage: String) -> URLRequest? {
