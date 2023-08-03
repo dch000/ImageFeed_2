@@ -63,4 +63,11 @@ final class ProfileService {
         return request
     }
     
+    func cleanSession() {
+        task?.cancel()
+        self.task = nil
+        OAuth2TokenStorage.token = nil
+        profile = nil
+    }
+    
 }

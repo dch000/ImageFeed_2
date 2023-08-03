@@ -114,4 +114,8 @@ final class ImagesListService {
         return request
     }
     
+    func cleanSession() {
+        self.task = nil
+        photos = []
+    }
 }
