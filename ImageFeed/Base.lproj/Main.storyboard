@@ -231,7 +231,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="chevron.backward"/>
                                 <connections>
-                                    <action selector="didTapBackButton:" destination="777-58-rV8" eventType="touchUpInside" id="b5D-fc-puH"/>
+                                    <action selector="didTapBackButton:" destination="777-58-rV8" eventType="touchUpInside" id="xet-t7-yrj"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 protocol ImagesListCellDelegate: AnyObject {
     func imageListCellDidTapLike(_ cell: ImagesListCell)
@@ -25,7 +26,7 @@ final class ImagesListCell: UITableViewCell {
     }
     
     func setIsLiked(isLiked: Bool) {
-        let likeImage = isLiked ? UIImage(named: "active_photo") : UIImage(named: "no_active_photo")
+        let likeImage = isLiked ? UIImage(named: "active") : UIImage(named: "no_active")
         likeCell.setImage(likeImage, for: .normal)
     }
     

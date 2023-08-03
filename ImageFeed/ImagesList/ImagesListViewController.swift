@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 final class ImagesListViewController: UIViewController  {
     
@@ -20,11 +21,6 @@ final class ImagesListViewController: UIViewController  {
         if segue.identifier == ShowSingleImageSegueIdentifier {
             guard let viewController = segue.destination as? SingleImageViewController else { return }
             guard let indexPath = sender as? IndexPath else { return }
-            /*
-            let image = photosName[indexPath.row]
-            let fullImage = UIImage(named: "\(image)_full_size") ?? UIImage(named: image)
-            viewController.image = fullImage
-             */
             if let url = imagesListService.photos[indexPath.row].largeImageURL,
                let imageURL = URL(string: url) {
                 viewController.singleImageURL = imageURL
@@ -122,11 +118,9 @@ extension ImagesListViewController {
             }else{
                 cell.dateCell.text = ""
             }
-            // ЛАЙКИ
-            let isLiked = indexPath.row % 2 == 0
-            let likeImage = isLiked ? UIImage(named: "active") : UIImage(named: "no_active")
+            let isLiked = imagesListService.photos[indexPath.row].isLiked == false
+            let likeImage = isLiked ? UIImage(named: "no_active") : UIImage(named: "active")
             cell.likeCell.setImage(likeImage, for: .normal)
-            //
             cell.selectionStyle = .none
             
         }
