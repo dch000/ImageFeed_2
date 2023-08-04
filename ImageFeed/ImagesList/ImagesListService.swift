@@ -10,6 +10,8 @@ final class ImagesListService {
     private var task: URLSessionTask?
     private let dateFormater = ISO8601DateFormatter()
     
+    private init() {}
+    
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
         guard task == nil else { return }
@@ -38,12 +40,12 @@ final class ImagesListService {
                                                  isLiked: image.isLiked ?? false))
                         print(self.photos)
                     }
-                        NotificationCenter.default.post(name: ImagesListService.didChangeNotification,
-                                                        object: self,
-                                                        userInfo: ["Images": self.photos])
-                        self.lastLoadedPage = nextPage
-                    case .failure(let error):
-                        assertionFailure("Не удалось получить изображение \(error)")
+                    NotificationCenter.default.post(name: ImagesListService.didChangeNotification,
+                                                    object: self,
+                                                    userInfo: ["Images": self.photos])
+                    self.lastLoadedPage = nextPage
+                case .failure(let error):
+                    assertionFailure("Не удалось получить изображение \(error)")
                 }
             }
         }
@@ -56,11 +58,9 @@ final class ImagesListService {
         task?.cancel()
         guard let token = OAuth2TokenStorage.token else { return }
         var request: URLRequest?
-        if isLike {
-            request = deleteLikeRequest(token, photoId: photoId)
-        } else {
-            request = postLikeRequest(token, photoId: photoId)
-        }
+        request = makeLikeRequest(token,
+                                  photoId: photoId,
+                                  method: isLike ? "DELETE" : "POST")
         guard let request = request else { return }
         let task = URLSession.shared.object(for: request) { [weak self] (result: Result<IsLiked, Error>) in
             guard let self = self else {return}
@@ -97,21 +97,13 @@ final class ImagesListService {
         return request
     }
     
-    private func postLikeRequest(_ token: String, photoId: String) -> URLRequest? {
+    private func makeLikeRequest(_ token: String, photoId: String, method: String) -> URLRequest {
         var request = URLRequest.makeHTTPRequest(path: "photos/\(photoId)/like",
-                                                 httpMethod: "POST",
+                                                 httpMethod: method,
                                                  baseURL: Constants.defaultBaseURL)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
-    }
-    
-    private func deleteLikeRequest(_ token: String, photoId: String) -> URLRequest? {
-        var request = URLRequest.makeHTTPRequest(
-            path: "photos/\(photoId)/like",
-            httpMethod: "DELETE",
-            baseURL: Constants.defaultBaseURL)
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        return request
+        
     }
     
     func cleanSession() {

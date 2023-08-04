@@ -36,8 +36,7 @@ final class ImagesListViewController: UIViewController  {
         imagesListServiceObserver = NotificationCenter.default.addObserver(forName: ImagesListService.didChangeNotification,
                                                                            object: nil,
                                                                            queue: .main) { [weak self] _ in
-            guard let self = self else { return }
-            self.updateTableViewAnimated()
+            self?.updateTableViewAnimated()
         }
         imagesListService.fetchPhotosNextPage()
         tableView.delegate = self

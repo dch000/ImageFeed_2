@@ -5,7 +5,7 @@ final class SingleImageViewController: UIViewController {
     
     var singleImageURL: URL?
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var scrollView: UIScrollView!
     
     

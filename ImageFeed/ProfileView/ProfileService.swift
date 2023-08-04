@@ -42,7 +42,7 @@ final class ProfileService {
                                        name: "\(profileResult.firstname ?? "") \(profileResult.lastname ?? "Test User Name") ",
                                        loginName: "@\(profileResult.username ?? "Test login name")",
                                        bio: profileResult.bio ?? "Test BIO")
-                //TODO: profile image
+                self.profileImageService.fetchProfileImageURL(token, username: self.profile?.username) { _ in}
                 print("\(String(describing: self.profile))")
                 completion(.success(self.profile!))
             case .failure(let error):
