@@ -1,9 +1,15 @@
 import UIKit
 import WebKit
 
-final class WebViewViewController: UIViewController {
+public protocol WebViewViewControllerProtocol: AnyObject {
+    var presenter: WebViewPresenterProtocol? { get set }
+    func load(request: URLRequest)
+}
+
+final class WebViewViewController: UIViewController & WebViewViewControllerProtocol{
     
     weak var delegate: WebViewViewControllerDelegate?
+    var presenter: WebViewPresenterProtocol?
     
     @IBOutlet private var webView: WKWebView!
     
@@ -42,7 +48,8 @@ final class WebViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
-        webViewLoad()
+        //webViewLoad()
+        presenter?.viewDidLoad()
         estimatedProgressObservation = webView.observe(
             \.estimatedProgress,
              options: [],
@@ -56,7 +63,7 @@ final class WebViewViewController: UIViewController {
         progressView.progress = Float(webView.estimatedProgress)
         progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
     }
-    
+    /*
     private func webViewLoad() {
         var urlComponents = URLComponents(string: "https://unsplash.com/oauth/authorize")!
         urlComponents.queryItems = [
@@ -70,6 +77,11 @@ final class WebViewViewController: UIViewController {
         let request = URLRequest(url:url)
         webView.load(request)
         updateProgress()
+    }
+     */
+    
+    func load(request: URLRequest) {
+        webView.load(request)
     }
 }
 
