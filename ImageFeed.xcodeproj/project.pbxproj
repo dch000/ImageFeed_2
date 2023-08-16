@@ -41,7 +41,6 @@
 		CECE56E629BE1BAB000B34E2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE56E529BE1BAB000B34E2 /* UIColor.swift */; };
 		CED4F7AB29B6105F00807B78 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4F7AA29B6105F00807B78 /* ProfileViewController.swift */; };
 		CEDB171429D1E4280047A1EF /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB171329D1E4280047A1EF /* SplashViewController.swift */; };
-		CEDB171629D1E5910047A1EF /* AuthViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB171529D1E5910047A1EF /* AuthViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,7 +77,6 @@
 		CECE56E529BE1BAB000B34E2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CED4F7AA29B6105F00807B78 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CEDB171329D1E4280047A1EF /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		CEDB171529D1E5910047A1EF /* AuthViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +119,6 @@
 				CE13EFD129C8A2BE001E3E76 /* WebViewViewController.swift */,
 				8B88F8A52A8A919C00B639E8 /* WebViewPresenter.swift */,
 				CE13EFD329CC6F72001E3E76 /* WebViewViewControllerDelegate.swift */,
-				CEDB171529D1E5910047A1EF /* AuthViewControllerDelegate.swift */,
 				8B88F8A72A8D4E2100B639E8 /* AuthHelper.swift */,
 			);
 			path = AuthView;
@@ -319,7 +316,6 @@
 				CE13EFD629CC976C001E3E76 /* OAuth2Service.swift in Sources */,
 				CE13EFD829CCA92B001E3E76 /* OAuth2TokenStorage.swift in Sources */,
 				CE4945F629A650EA001CE1B4 /* ImagesListCell.swift in Sources */,
-				CEDB171629D1E5910047A1EF /* AuthViewControllerDelegate.swift in Sources */,
 				CE70F96229A122FF00716648 /* AppDelegate.swift in Sources */,
 				CE70F96429A122FF00716648 /* SceneDelegate.swift in Sources */,
 				8BB0FCC42A5DE8D3008AFFA1 /* Extension NetworkClient.swift in Sources */,
