@@ -7,32 +7,31 @@ enum Constants {
     static let accessScope = "public+read_user+write_likes"
     static let defaultBaseURL: URL = URL(string: "https://api.unsplash.com/")!
     static let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
+}
+struct AuthConfiguration {
+    let accessKey: String
+    let secretKey: String
+    let redirectURI: String
+    let accesScope: String
+    let defaultBaseURL: URL
+    let unsplashAuthorizeURLString: String
     
-    struct AuthConfiguration {
-        let accessKey: String
-        let secretKey: String
-        let redirectURI: String
-        let accesScope: String
-        let defaultBaseURL: URL
-        let unsplashAuthorizeURLString: String
-        
-        static var standard: AuthConfiguration {
-            return AuthConfiguration(accessKey: Constants.accessKey ,
-                                     secretKey: Constants.secretKey,
-                                     redirectURI: Constants.redirectURI,
-                                     accesScope: Constants.accessScope,
-                                     defaultBaseURL: Constants.defaultBaseURL,
-                                     unsplashAuthorizeURLString: Constants.unsplashAuthorizeURLString)
-        }
-        
-        init(accessKey: String, secretKey: String, redirectURI: String, accesScope: String, defaultBaseURL: URL, unsplashAuthorizeURLString: String) {
-            self.accessKey = accessKey
-            self.secretKey = secretKey
-            self.redirectURI = redirectURI
-            self.accesScope = accesScope
-            self.defaultBaseURL = defaultBaseURL
-            self.unsplashAuthorizeURLString = unsplashAuthorizeURLString
-        }
+    static var standard: AuthConfiguration {
+        return AuthConfiguration(accessKey: Constants.accessKey ,
+                                 secretKey: Constants.secretKey,
+                                 redirectURI: Constants.redirectURI,
+                                 accesScope: Constants.accessScope,
+                                 defaultBaseURL: Constants.defaultBaseURL,
+                                 unsplashAuthorizeURLString: Constants.unsplashAuthorizeURLString)
     }
     
+    init(accessKey: String, secretKey: String, redirectURI: String, accesScope: String, defaultBaseURL: URL, unsplashAuthorizeURLString: String) {
+        self.accessKey = accessKey
+        self.secretKey = secretKey
+        self.redirectURI = redirectURI
+        self.accesScope = accesScope
+        self.defaultBaseURL = defaultBaseURL
+        self.unsplashAuthorizeURLString = unsplashAuthorizeURLString
+    }
 }
+
