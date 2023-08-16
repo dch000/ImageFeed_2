@@ -20,7 +20,7 @@
 		8B9158872A5C8E6F008E851A /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9158862A5C8E6F008E851A /* ProfileService.swift */; };
 		8BB0FCC42A5DE8D3008AFFA1 /* Extension NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB0FCC32A5DE8D2008AFFA1 /* Extension NetworkClient.swift */; };
 		CE13EFCA29C35129001E3E76 /* Extension UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFC929C35129001E3E76 /* Extension UIView.swift */; };
-		CE13EFCD29C88B15001E3E76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFCC29C88B15001E3E76 /* Constants.swift */; };
+		CE13EFCD29C88B15001E3E76 /* OAuthConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFCC29C88B15001E3E76 /* OAuthConfiguration.swift */; };
 		CE13EFD029C8A148001E3E76 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFCF29C8A148001E3E76 /* AuthViewController.swift */; };
 		CE13EFD229C8A2BE001E3E76 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFD129C8A2BE001E3E76 /* WebViewViewController.swift */; };
 		CE13EFD429CC6F72001E3E76 /* WebViewViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFD329CC6F72001E3E76 /* WebViewViewControllerDelegate.swift */; };
@@ -54,7 +54,7 @@
 		8B9158862A5C8E6F008E851A /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		8BB0FCC32A5DE8D2008AFFA1 /* Extension NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension NetworkClient.swift"; sourceTree = "<group>"; };
 		CE13EFC929C35129001E3E76 /* Extension UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIView.swift"; sourceTree = "<group>"; };
-		CE13EFCC29C88B15001E3E76 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE13EFCC29C88B15001E3E76 /* OAuthConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthConfiguration.swift; sourceTree = "<group>"; };
 		CE13EFCF29C8A148001E3E76 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		CE13EFD129C8A2BE001E3E76 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		CE13EFD329CC6F72001E3E76 /* WebViewViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		CE13EFCB29C88AF4001E3E76 /* Unsplash API */ = {
 			isa = PBXGroup;
 			children = (
-				CE13EFCC29C88B15001E3E76 /* Constants.swift */,
+				CE13EFCC29C88B15001E3E76 /* OAuthConfiguration.swift */,
 				CE13EFD529CC976C001E3E76 /* OAuth2Service.swift */,
 				CE13EFD729CCA92B001E3E76 /* OAuth2TokenStorage.swift */,
 				CE13EFD929CCAFEF001E3E76 /* OAuthTokenResponseBody.swift */,
@@ -297,7 +297,7 @@
 				8B40A4552A73F1FB00F56DBD /* ImagesListModels.swift in Sources */,
 				8B88F8A62A8A919C00B639E8 /* WebViewPresenter.swift in Sources */,
 				CED4F7AB29B6105F00807B78 /* ProfileViewController.swift in Sources */,
-				CE13EFCD29C88B15001E3E76 /* Constants.swift in Sources */,
+				CE13EFCD29C88B15001E3E76 /* OAuthConfiguration.swift in Sources */,
 				CE70F96629A122FF00716648 /* ImagesListViewController.swift in Sources */,
 				8B9158852A5C8AF4008E851A /* UIBlockingProgressHUD.swift in Sources */,
 				CEDB171429D1E4280047A1EF /* SplashViewController.swift in Sources */,
