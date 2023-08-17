@@ -6,7 +6,7 @@ enum Constants {
     static let redirectURI = "urn:ietf:wg:oauth:2.0:oob"
     static let accessScope = "public+read_user+write_likes"
     static let defaultBaseURL: URL = URL(string: "https://api.unsplash.com/")!
-    static let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
+    static let authURLString = "https://unsplash.com/oauth/authorize"
 }
 struct AuthConfiguration {
     let accessKey: String
@@ -14,7 +14,7 @@ struct AuthConfiguration {
     let redirectURI: String
     let accesScope: String
     let defaultBaseURL: URL
-    let unsplashAuthorizeURLString: String
+    let authURLString: String
     
     static var standard: AuthConfiguration {
         return AuthConfiguration(accessKey: Constants.accessKey ,
@@ -22,16 +22,16 @@ struct AuthConfiguration {
                                  redirectURI: Constants.redirectURI,
                                  accesScope: Constants.accessScope,
                                  defaultBaseURL: Constants.defaultBaseURL,
-                                 unsplashAuthorizeURLString: Constants.unsplashAuthorizeURLString)
+                                 authURLString: Constants.authURLString)
     }
     
-    init(accessKey: String, secretKey: String, redirectURI: String, accesScope: String, defaultBaseURL: URL, unsplashAuthorizeURLString: String) {
+    init(accessKey: String, secretKey: String, redirectURI: String, accesScope: String, defaultBaseURL: URL, authURLString: String) {
         self.accessKey = accessKey
         self.secretKey = secretKey
         self.redirectURI = redirectURI
         self.accesScope = accesScope
         self.defaultBaseURL = defaultBaseURL
-        self.unsplashAuthorizeURLString = unsplashAuthorizeURLString
+        self.authURLString = authURLString
     }
 }
 
