@@ -24,6 +24,8 @@
 		8B9158872A5C8E6F008E851A /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9158862A5C8E6F008E851A /* ProfileService.swift */; };
 		8BB0FCC42A5DE8D3008AFFA1 /* Extension NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB0FCC32A5DE8D2008AFFA1 /* Extension NetworkClient.swift */; };
 		8BC57C7D2A90E97900FAF87F /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC57C7C2A90E97900FAF87F /* ProfilePresenter.swift */; };
+		8BC57C7F2A90FC3D00FAF87F /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC57C7E2A90FC3D00FAF87F /* ProfileViewTests.swift */; };
+		8BC57C812A9100AF00FAF87F /* ProfilePresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC57C802A9100AF00FAF87F /* ProfilePresenterSpy.swift */; };
 		CE13EFCA29C35129001E3E76 /* Extension UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFC929C35129001E3E76 /* Extension UIView.swift */; };
 		CE13EFCD29C88B15001E3E76 /* OAuthConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFCC29C88B15001E3E76 /* OAuthConfiguration.swift */; };
 		CE13EFD029C8A148001E3E76 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFCF29C8A148001E3E76 /* AuthViewController.swift */; };
@@ -73,6 +75,8 @@
 		8B9158862A5C8E6F008E851A /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		8BB0FCC32A5DE8D2008AFFA1 /* Extension NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension NetworkClient.swift"; sourceTree = "<group>"; };
 		8BC57C7C2A90E97900FAF87F /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		8BC57C7E2A90FC3D00FAF87F /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
+		8BC57C802A9100AF00FAF87F /* ProfilePresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenterSpy.swift; sourceTree = "<group>"; };
 		CE13EFC929C35129001E3E76 /* Extension UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIView.swift"; sourceTree = "<group>"; };
 		CE13EFCC29C88B15001E3E76 /* OAuthConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthConfiguration.swift; sourceTree = "<group>"; };
 		CE13EFCF29C8A148001E3E76 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 				8B8744002A8E9CFF008233C7 /* WebViewTests.swift */,
 				8B8744072A8E9FB4008233C7 /* WebViewPresenterSpy.swift */,
 				8B8744092A8EA184008233C7 /* WebViewViewControllerSpy.swift */,
+				8BC57C7E2A90FC3D00FAF87F /* ProfileViewTests.swift */,
+				8BC57C802A9100AF00FAF87F /* ProfilePresenterSpy.swift */,
 			);
 			path = ImageFeedTests;
 			sourceTree = "<group>";
@@ -362,6 +368,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC57C812A9100AF00FAF87F /* ProfilePresenterSpy.swift in Sources */,
+				8BC57C7F2A90FC3D00FAF87F /* ProfileViewTests.swift in Sources */,
 				8B8744012A8E9CFF008233C7 /* WebViewTests.swift in Sources */,
 				8B87440A2A8EA184008233C7 /* WebViewViewControllerSpy.swift in Sources */,
 				8B8744082A8E9FB4008233C7 /* WebViewPresenterSpy.swift in Sources */,
