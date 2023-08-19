@@ -70,13 +70,6 @@ final class ProfileViewController: UIViewController {
         avatarView.layer.addSublayer(gradient)
     }
     
-    private func updateProfileDetails() {
-        guard let profile = profileService.profile else { return }
-        profileName.text = profile.name
-        profileTag.text = profile.loginName
-        profileInfo.text = profile.bio
-    }
-    
     private func updateAvatar() {
         guard
             let profileImageURL = ProfileImageService.shared.avatarURL,
@@ -151,26 +144,6 @@ final class ProfileViewController: UIViewController {
     private func logOut() {
         cleanAllService()
         switchToSplashViewController()
-    }
-    
-    private func switchToSplashViewController() {
-        guard let window = UIApplication.shared.windows.first else {
-            assertionFailure("Invalid Configuration")
-            return
-        }
-        window.rootViewController = SplashViewController()
-    }
-    
-    private func showAlert() {
-        let alertController = UIAlertController(title: "Выход",
-                                                message: "Вы уверены что хотите выйти?",
-                                                preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] action in
-            guard let self = self else {return}
-            self.logOut()
-        }))
-        alertController.addAction(UIAlertAction(title: "Нет", style: .default))
-        present(alertController, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

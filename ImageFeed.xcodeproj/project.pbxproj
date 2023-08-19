@@ -23,6 +23,7 @@
 		8B9158852A5C8AF4008E851A /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9158842A5C8AF4008E851A /* UIBlockingProgressHUD.swift */; };
 		8B9158872A5C8E6F008E851A /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9158862A5C8E6F008E851A /* ProfileService.swift */; };
 		8BB0FCC42A5DE8D3008AFFA1 /* Extension NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB0FCC32A5DE8D2008AFFA1 /* Extension NetworkClient.swift */; };
+		8BC57C7D2A90E97900FAF87F /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC57C7C2A90E97900FAF87F /* ProfilePresenter.swift */; };
 		CE13EFCA29C35129001E3E76 /* Extension UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFC929C35129001E3E76 /* Extension UIView.swift */; };
 		CE13EFCD29C88B15001E3E76 /* OAuthConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFCC29C88B15001E3E76 /* OAuthConfiguration.swift */; };
 		CE13EFD029C8A148001E3E76 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13EFCF29C8A148001E3E76 /* AuthViewController.swift */; };
@@ -71,6 +72,7 @@
 		8B9158842A5C8AF4008E851A /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		8B9158862A5C8E6F008E851A /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		8BB0FCC32A5DE8D2008AFFA1 /* Extension NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension NetworkClient.swift"; sourceTree = "<group>"; };
+		8BC57C7C2A90E97900FAF87F /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		CE13EFC929C35129001E3E76 /* Extension UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIView.swift"; sourceTree = "<group>"; };
 		CE13EFCC29C88B15001E3E76 /* OAuthConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthConfiguration.swift; sourceTree = "<group>"; };
 		CE13EFCF29C8A148001E3E76 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				CED4F7AA29B6105F00807B78 /* ProfileViewController.swift */,
+				8BC57C7C2A90E97900FAF87F /* ProfilePresenter.swift */,
 				8B9158862A5C8E6F008E851A /* ProfileService.swift */,
 				8B7DD91C2A6D09540019DCA1 /* ProfileImageService.swift */,
 			);
@@ -390,6 +393,7 @@
 				CE13EFD229C8A2BE001E3E76 /* WebViewViewController.swift in Sources */,
 				CE748DED29B6428600C98A6A /* SingleImageViewController.swift in Sources */,
 				CE13EFD629CC976C001E3E76 /* OAuth2Service.swift in Sources */,
+				8BC57C7D2A90E97900FAF87F /* ProfilePresenter.swift in Sources */,
 				CE13EFD829CCA92B001E3E76 /* OAuth2TokenStorage.swift in Sources */,
 				CE4945F629A650EA001CE1B4 /* ImagesListCell.swift in Sources */,
 				CE70F96229A122FF00716648 /* AppDelegate.swift in Sources */,
