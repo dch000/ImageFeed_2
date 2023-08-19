@@ -2,10 +2,13 @@ import UIKit
 import WebKit
 
 public protocol ProfilePresenterProtocol {
+    var view: ProfileViewViewControllerProtocol? { get set}
     func getAvatarURL() -> URL?
     func updateProfileDetails() -> (profileName: String, profileTag: String, profileInfo: String)?
     func showAlert(vc: UIViewController)
     func logOut()
+    func viewDidLoad()
+    static func cleanSession()
 }
 
 final class ProfilePresenter: ProfilePresenterProtocol {
@@ -22,13 +25,14 @@ final class ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func getAvatarURL() -> URL? {
-        guard let profileImageURL = ProfileImageService.shared.avatarURL,
-              let url = URL(string: profileImageURL)
-        else {return nil}
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else { return nil }
         return url
     }
     
-    func updateProfileDetails() -> (profileName: String, profileTag: String, profileInfo:String)? {
+    func updateProfileDetails() -> (profileName: String, profileTag: String, profileInfo: String)? {
         guard
             let profileName = profileService.profile?.name,
             let profileTag = profileService.profile?.loginName,
@@ -50,7 +54,7 @@ final class ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func logOut() {
-        profileService.cleanSession()
+        ProfilePresenter.cleanSession()
         ProfileService.shared.cleanSession()
         ProfileImageService.shared.cleanSession()
         ImagesListService.shared.cleanSession()
@@ -77,5 +81,4 @@ final class ProfilePresenter: ProfilePresenterProtocol {
             }
         }
     }
-    
 }

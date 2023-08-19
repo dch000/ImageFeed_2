@@ -1,6 +1,6 @@
 import UIKit
 import Kingfisher
-import WebKit
+
 
 public protocol ProfileViewViewControllerProtocol: AnyObject {
     var presenter: ProfilePresenterProtocol? { get set }
@@ -10,11 +10,9 @@ public protocol ProfileViewViewControllerProtocol: AnyObject {
 final class ProfileViewController: UIViewController, ProfileViewViewControllerProtocol {
     var presenter: ProfilePresenterProtocol?
     
-    private let profileService = ProfileService.shared
-    private var profileImageServiceObserver: NSObjectProtocol?
-    
     private lazy var avatarView: UIImageView = {
         let avatarView = UIImageView()
+        avatarView.image = UIImage(named: "default_avatar")
         avatarView.contentMode = .scaleAspectFill
         avatarView.layer.cornerRadius = 35
         avatarView.clipsToBounds = true
@@ -48,42 +46,29 @@ final class ProfileViewController: UIViewController, ProfileViewViewControllerPr
             target: self,
             action: #selector(Self.didTapButton)
         )
+        logoutButton.accessibilityIdentifier = "logoutButton"
         logoutButton.tintColor = Resources.Colors.buttonColor
         return logoutButton
     } ()
     
-    private func avatarAnimation() {
-        let gradient = CAGradientLayer()
-        gradient.frame = CGRect(origin: .zero, size: CGSize(width: 70, height: 70))
-        gradient.locations = [0, 0.1, 0.3]
-        gradient.colors = [
-            UIColor(red: 0.682, green: 0.686, blue: 0.706, alpha: 1).cgColor,
-            UIColor(red: 0.531, green: 0.533, blue: 0.553, alpha: 1).cgColor,
-            UIColor(red: 0.431, green: 0.433, blue: 0.453, alpha: 1).cgColor
-        ]
-        gradient.startPoint = CGPoint(x: 0, y: 0.5)
-        gradient.endPoint = CGPoint(x: 1, y: 0.5)
-        gradient.cornerRadius = 35
-        gradient.masksToBounds = true
-        
-        
-        let gradientChangeAnimation = CABasicAnimation(keyPath: "locations")
-        gradientChangeAnimation.duration = 1.0
-        gradientChangeAnimation.repeatCount = .infinity
-        gradientChangeAnimation.fromValue = [0, 0.1, 0.3]
-        gradientChangeAnimation.toValue = [0, 0.8, 1]
-        gradient.add(gradientChangeAnimation, forKey: "locationsChange")
-        avatarView.layer.addSublayer(gradient)
+    func configure(_ presenter: ProfilePresenterProtocol) {
+            self.presenter = presenter
+            self.presenter?.view = self
+         }
+    
+    func updateProfileDetails() {
+        profileName.text = presenter?.updateProfileDetails()?.profileName
+        profileTag.text = presenter?.updateProfileDetails()?.profileTag
+        profileInfo.text = presenter?.updateProfileDetails()?.profileInfo
     }
     
     func updateAvatar() {
-        guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
-            let url = URL(string: profileImageURL)
-        else { return }
+        guard let url = presenter?.getAvatarURL() else { return }
         let processor = RoundCornerImageProcessor(cornerRadius: 35, backgroundColor: .clear)
         avatarView.kf.indicatorType = .activity
-        avatarView.kf.setImage(with: url, placeholder: UIImage(named: "default_avatar"), options: [.processor(processor), .cacheSerializer(FormatIndicatedCacheSerializer.png)]) { result in
+        avatarView.kf.setImage(with: url,
+                               placeholder: UIImage(named: "default_avatar"),
+                               options: [.processor(processor), .cacheSerializer(FormatIndicatedCacheSerializer.png)]) { result in
             switch result {
             case .success(let value):
                 print(value.image)
@@ -128,38 +113,19 @@ final class ProfileViewController: UIViewController, ProfileViewViewControllerPr
     }
     
     @objc private func didTapButton(){
-        showAlert()
-    }
-    
-    static func cleanSession() {
-     
-    }
-    
-    private func cleanAllService() {
-        ProfileService.shared.cleanSession()
-        ProfileImageService.shared.cleanSession()
-        ImagesListService.shared.cleanSession()
-        ProfileViewController.cleanSession()
+        presenter?.showAlert(vc: self)
     }
     
     private func logOut() {
-        cleanAllService()
-        switchToSplashViewController()
+        presenter?.logOut()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        updateProfileDetails()
-        updateAvatar()
-        //avatarAnimation()
-    }
-    
+ 
     override func viewDidLoad() {
         view.backgroundColor = Resources.Colors.backgroundColor
         addViews()
         applyConstraints()
         updateProfileDetails()
         updateAvatar()
-       
+        presenter?.view = self
     }
 }
