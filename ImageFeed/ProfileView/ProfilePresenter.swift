@@ -4,11 +4,14 @@ import WebKit
 public protocol ProfilePresenterProtocol {
     func getAvatarURL() -> URL?
     func updateProfileDetails() -> (profileName: String, profileTag: String, profileInfo: String)?
-    
+    func showAlert(vc: UIViewController)
+    func logOut()
 }
 
 final class ProfilePresenter: ProfilePresenterProtocol {
+    weak var view: ProfileViewViewControllerProtocol?
     private var profileService = ProfileService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
     
     func switchToSplashViewController() {
         guard let window = UIApplication.shared.windows.first else {
@@ -34,7 +37,7 @@ final class ProfilePresenter: ProfilePresenterProtocol {
         return (profileName, profileTag, profileInfo)
     }
     
-    func showAlert() {
+    func showAlert(vc: UIViewController) {
         let alertController = UIAlertController(title: "Выход",
                                                 message: "Вы уверены что хотите выйти?",
                                                 preferredStyle: .alert)
@@ -43,8 +46,36 @@ final class ProfilePresenter: ProfilePresenterProtocol {
             self.logOut()
         }))
         alertController.addAction(UIAlertAction(title: "Нет", style: .default))
-        present(alertController, animated: true)
+        vc.present(alertController, animated: true)
     }
     
+    func logOut() {
+        profileService.cleanSession()
+        ProfileService.shared.cleanSession()
+        ProfileImageService.shared.cleanSession()
+        ImagesListService.shared.cleanSession()
+        OAuth2TokenStorage.token?.removeAll()
+        self.switchToSplashViewController()
+    }
+    
+    func viewDidLoad() {
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(forName: ProfileImageService.didChangeNotification,
+                         object: nil,
+                         queue: .main
+            ) { [weak self]  _ in
+                guard let self = self else { return }
+                self.view?.updateAvatar()
+            }
+    }
+    
+    static func cleanSession() {
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+            }
+        }
+    }
     
 }

@@ -2,7 +2,13 @@ import UIKit
 import Kingfisher
 import WebKit
 
-final class ProfileViewController: UIViewController {
+public protocol ProfileViewViewControllerProtocol: AnyObject {
+    var presenter: ProfilePresenterProtocol? { get set }
+    func updateAvatar()
+}
+
+final class ProfileViewController: UIViewController, ProfileViewViewControllerProtocol {
+    var presenter: ProfilePresenterProtocol?
     
     private let profileService = ProfileService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
@@ -70,7 +76,7 @@ final class ProfileViewController: UIViewController {
         avatarView.layer.addSublayer(gradient)
     }
     
-    private func updateAvatar() {
+    func updateAvatar() {
         guard
             let profileImageURL = ProfileImageService.shared.avatarURL,
             let url = URL(string: profileImageURL)
@@ -126,12 +132,7 @@ final class ProfileViewController: UIViewController {
     }
     
     static func cleanSession() {
-       HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-       WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
-          records.forEach { record in
-             WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
-          }
-       }
+     
     }
     
     private func cleanAllService() {
@@ -159,13 +160,6 @@ final class ProfileViewController: UIViewController {
         applyConstraints()
         updateProfileDetails()
         updateAvatar()
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(forName: ProfileImageService.didChangeNotification,
-                         object: nil,
-                         queue: .main
-            ) { [weak self]  _ in
-                guard let self = self else { return }
-                self.updateAvatar()
-        }
+       
     }
 }
