@@ -44,11 +44,11 @@ final class ImagesListViewController: UIViewController & ImagesListViewViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         presenter?.viewDidLoad()
         presenter?.updateViewTable()
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView?.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        tableView?.delegate = self
+        tableView?.dataSource = self
     }
 }
 
@@ -122,6 +122,6 @@ extension ImagesListViewController {
 extension ImagesListViewController: ImagesListCellDelegate {
     func imageListCellDidTapLike(_ cell: ImagesListCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        presenter?.imagesListCellDidTapLike(cell, indexPath: indexPath)
+        presenter?.imageListCellDidTapLike(cell, indexPath: indexPath)
     }
 }

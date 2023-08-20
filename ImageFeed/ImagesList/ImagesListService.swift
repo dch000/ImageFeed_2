@@ -14,8 +14,6 @@ final class ImagesListService {
     private var task: URLSessionTask?
     private let dateFormater = ISO8601DateFormatter()
     
-    private init() {}
-    
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
         guard task == nil else { return }
