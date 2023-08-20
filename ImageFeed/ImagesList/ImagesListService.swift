@@ -1,5 +1,9 @@
 import UIKit
 
+public protocol ImagesListServiceProtocol: AnyObject {
+    func fetchPhotosNextPage()
+}
+
 final class ImagesListService {
     
     static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
