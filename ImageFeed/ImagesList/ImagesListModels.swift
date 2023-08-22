@@ -1,6 +1,6 @@
 import Foundation
 
-struct Photo {
+public struct Photo {
     let id: String
     let size: CGSize
     let createdAt: Date?
@@ -33,7 +33,7 @@ struct UrlsResult: Decodable {
     let thumbImageURL: String?
     let largeImageURL: String?
     enum CodingKeys: String, CodingKey {
-        case thumbImageURL = "thumb"
+        case thumbImageURL = "regular" //thumb
         case largeImageURL = "full"
     }
 }

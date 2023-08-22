@@ -1,14 +1,18 @@
 import UIKit
 import Kingfisher
-import WebKit
 
-final class ProfileViewController: UIViewController {
-    
-    private let profileService = ProfileService.shared
-    private var profileImageServiceObserver: NSObjectProtocol?
+
+public protocol ProfileViewViewControllerProtocol: AnyObject {
+    var presenter: ProfilePresenterProtocol? { get set }
+    func updateAvatar()
+}
+
+final class ProfileViewController: UIViewController, ProfileViewViewControllerProtocol {
+    var presenter: ProfilePresenterProtocol?
     
     private lazy var avatarView: UIImageView = {
         let avatarView = UIImageView()
+        avatarView.image = UIImage(named: "default_avatar")
         avatarView.contentMode = .scaleAspectFill
         avatarView.layer.cornerRadius = 35
         avatarView.clipsToBounds = true
@@ -42,49 +46,29 @@ final class ProfileViewController: UIViewController {
             target: self,
             action: #selector(Self.didTapButton)
         )
+        logoutButton.accessibilityIdentifier = "logoutButton"
         logoutButton.tintColor = Resources.Colors.buttonColor
         return logoutButton
     } ()
     
-    private func avatarAnimation() {
-        let gradient = CAGradientLayer()
-        gradient.frame = CGRect(origin: .zero, size: CGSize(width: 70, height: 70))
-        gradient.locations = [0, 0.1, 0.3]
-        gradient.colors = [
-            UIColor(red: 0.682, green: 0.686, blue: 0.706, alpha: 1).cgColor,
-            UIColor(red: 0.531, green: 0.533, blue: 0.553, alpha: 1).cgColor,
-            UIColor(red: 0.431, green: 0.433, blue: 0.453, alpha: 1).cgColor
-        ]
-        gradient.startPoint = CGPoint(x: 0, y: 0.5)
-        gradient.endPoint = CGPoint(x: 1, y: 0.5)
-        gradient.cornerRadius = 35
-        gradient.masksToBounds = true
-        
-        
-        let gradientChangeAnimation = CABasicAnimation(keyPath: "locations")
-        gradientChangeAnimation.duration = 1.0
-        gradientChangeAnimation.repeatCount = .infinity
-        gradientChangeAnimation.fromValue = [0, 0.1, 0.3]
-        gradientChangeAnimation.toValue = [0, 0.8, 1]
-        gradient.add(gradientChangeAnimation, forKey: "locationsChange")
-        avatarView.layer.addSublayer(gradient)
+    func configure(_ presenter: ProfilePresenterProtocol) {
+            self.presenter = presenter
+            self.presenter?.view = self
+         }
+    
+    func updateProfileDetails() {
+        profileName.text = presenter?.updateProfileDetails()?.profileName
+        profileTag.text = presenter?.updateProfileDetails()?.profileTag
+        profileInfo.text = presenter?.updateProfileDetails()?.profileInfo
     }
     
-    private func updateProfileDetails() {
-        guard let profile = profileService.profile else { return }
-        profileName.text = profile.name
-        profileTag.text = profile.loginName
-        profileInfo.text = profile.bio
-    }
-    
-    private func updateAvatar() {
-        guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
-            let url = URL(string: profileImageURL)
-        else { return }
+    func updateAvatar() {
+        guard let url = presenter?.getAvatarURL() else { return }
         let processor = RoundCornerImageProcessor(cornerRadius: 35, backgroundColor: .clear)
         avatarView.kf.indicatorType = .activity
-        avatarView.kf.setImage(with: url, placeholder: UIImage(named: "default_avatar"), options: [.processor(processor), .cacheSerializer(FormatIndicatedCacheSerializer.png)]) { result in
+        avatarView.kf.setImage(with: url,
+                               placeholder: UIImage(named: "default_avatar"),
+                               options: [.processor(processor), .cacheSerializer(FormatIndicatedCacheSerializer.png)]) { result in
             switch result {
             case .success(let value):
                 print(value.image)
@@ -129,70 +113,19 @@ final class ProfileViewController: UIViewController {
     }
     
     @objc private func didTapButton(){
-        showAlert()
-    }
-    
-    static func cleanSession() {
-       HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-       WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
-          records.forEach { record in
-             WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
-          }
-       }
-    }
-    
-    private func cleanAllService() {
-        ProfileService.shared.cleanSession()
-        ProfileImageService.shared.cleanSession()
-        ImagesListService.shared.cleanSession()
-        ProfileViewController.cleanSession()
+        presenter?.showAlert(vc: self)
     }
     
     private func logOut() {
-        cleanAllService()
-        switchToSplashViewController()
+        presenter?.logOut()
     }
-    
-    private func switchToSplashViewController() {
-        guard let window = UIApplication.shared.windows.first else {
-            assertionFailure("Invalid Configuration")
-            return
-        }
-        window.rootViewController = SplashViewController()
-    }
-    
-    private func showAlert() {
-        let alertController = UIAlertController(title: "Выход",
-                                                message: "Вы уверены что хотите выйти?",
-                                                preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] action in
-            guard let self = self else {return}
-            self.logOut()
-        }))
-        alertController.addAction(UIAlertAction(title: "Нет", style: .default))
-        present(alertController, animated: true)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        updateProfileDetails()
-        updateAvatar()
-        //avatarAnimation()
-    }
-    
+ 
     override func viewDidLoad() {
         view.backgroundColor = Resources.Colors.backgroundColor
         addViews()
         applyConstraints()
         updateProfileDetails()
         updateAvatar()
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(forName: ProfileImageService.didChangeNotification,
-                         object: nil,
-                         queue: .main
-            ) { [weak self]  _ in
-                guard let self = self else { return }
-                self.updateAvatar()
-        }
+        presenter?.view = self
     }
 }

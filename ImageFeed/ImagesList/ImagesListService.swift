@@ -1,5 +1,9 @@
 import UIKit
 
+public protocol ImagesListServiceProtocol: AnyObject {
+    func fetchPhotosNextPage()
+}
+
 final class ImagesListService {
     
     static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
@@ -9,8 +13,6 @@ final class ImagesListService {
     private var lastLoadedPage: Int?
     private var task: URLSessionTask?
     private let dateFormater = ISO8601DateFormatter()
-    
-    private init() {}
     
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
